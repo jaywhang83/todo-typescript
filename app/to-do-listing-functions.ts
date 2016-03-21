@@ -5,7 +5,7 @@ module ToDoList {
     var descriptions: String[] = [];
     for(var task of taskCollection) {
       if(task.assignedTo === assignee) {
-        descriptions.push(task.description);
+        descriptions.push(task.description + " " + task.priority);
       }
     }
     return descriptions;
@@ -17,6 +17,17 @@ module ToDoList {
 
       if(task.constructor.name === taskType) {
         console.log("Here" + task.toString());
+        descriptions.push(task.description);
+      }
+    }
+    return descriptions;
+  }
+
+  export var describeTasksForPriority = function(taskPriority: string, taskCollection: Task[]): String[] {
+    var descriptions: String[] = [];
+    for(var task of taskCollection) {
+
+      if(task.priority === taskPriority) {
         descriptions.push(task.description);
       }
     }
