@@ -7,7 +7,7 @@ var people = ToDoList.people;
 var tasks = [];
 tasks.push(new ToDoList.HomeTask("Do the dishes.", "High"));
 tasks.push(new ToDoList.HomeTask("Buy chocolate.", "Low", people.diane));
-tasks.push(new ToDoList.HomeTask("Wash the laundry", "High"));
+tasks.push(new ToDoList.HomeTask("Wash the laundry.", "High", people.loki));
 tasks[0].markDone();
 
 tasks.push (new ToDoList.HobbyTask("practice origami."));
@@ -20,28 +20,37 @@ var nextDay = new Date();
 nextDay .setDate(today.getDate() + 2);
 
 tasks.push(new ToDoList.WorkTask(today, "Update blog.", "High", people.diane));
-tasks.push(new ToDoList.WorkTask(tomorrow, "Go to meeting", "Medium", people.thor));
+tasks.push(new ToDoList.WorkTask(today, "Kick Loki's Butt!.", "High", people.thor));
+tasks.push(new ToDoList.WorkTask(today, "Kick Thor's Butt!.", "High", people.loki));
+tasks.push(new ToDoList.WorkTask(tomorrow, "Go to meeting.", "Medium", people.thor));
 tasks.push(new ToDoList.WorkTask(tomorrow, "Save the world.", "High", people.thor));
 tasks.push(new ToDoList.WorkTask(tomorrow, "Buy a new shirt.", "Low", people.thor));
-tasks.push(new ToDoList.WorkTask(nextDay, "Clean ceiling", "Low", people.loki));
+tasks.push(new ToDoList.WorkTask(nextDay, "Clean ceiling.", "Low", people.loki));
+tasks.push(new ToDoList.WorkTask(nextDay, "Clean toilet.", "High", people.loki));
 
 console.log(tasks);
-var tempList: ToDoList.Task[];
+
 var thorTasks = ToDoList.describeTasksForPerson(people.thor, tasks);
 console.log("Here are Thor's tasks: ");
 for(var task of thorTasks) {
   console.log(task);
 }
 
-console.log("thors tasks: " + thorTasks);
-for(var task of thorTasks) {
-  console.log("type of: " + typeof(task));
-  if(task.includes('High')) {
-    console.log("Highest task " + task);
-  }
-}
+var priorityHighestForThor = ToDoList.describeTasksPriorityHigh(people.thor, "High", tasks);
+console.log(priorityHighestForThor);
+console.log("Here is the first high priority task for Thor");
+console.log(priorityHighestForThor[0]);
 
-console.log(tasks);
+var priorityHighestForDiane = ToDoList.describeTasksPriorityHigh(people.diane, "High", tasks);
+console.log(priorityHighestForDiane);
+console.log("Here is the first high priority task for Diane");
+console.log(priorityHighestForDiane[0]);
+
+var priorityHighestForLoki = ToDoList.describeTasksPriorityHigh(people.loki, "High", tasks);
+console.log(priorityHighestForLoki);
+console.log("Here is the first high priority task for Loki");
+console.log(priorityHighestForLoki[0]);
+
 var typeHomeTasks = ToDoList.describeTasksForType("HomeTask", tasks);
 console.log(typeHomeTasks);
 console.log("Here are the tasks for HomeTask");
@@ -55,7 +64,6 @@ console.log("Here are the tasks for HobbyTask");
 for(var task of typeHobbyTasks) {
   console.log(task);
 }
-
 
 var typeWorkTasks = ToDoList.describeTasksForType("WorkTask", tasks);
 console.log(typeWorkTasks);
