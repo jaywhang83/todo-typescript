@@ -39,17 +39,17 @@ for(var task of thorTasks) {
 var priorityHighestForThor = ToDoList.describeTasksPriorityHigh(people.thor, "High", tasks);
 console.log(priorityHighestForThor);
 console.log("Here is the first high priority task for Thor");
-console.log(priorityHighestForThor[0]);
+console.log(priorityHighestForThor);
 
 var priorityHighestForDiane = ToDoList.describeTasksPriorityHigh(people.diane, "High", tasks);
 console.log(priorityHighestForDiane);
 console.log("Here is the first high priority task for Diane");
-console.log(priorityHighestForDiane[0]);
+console.log(priorityHighestForDiane);
 
 var priorityHighestForLoki = ToDoList.describeTasksPriorityHigh(people.loki, "High", tasks);
 console.log(priorityHighestForLoki);
 console.log("Here is the first high priority task for Loki");
-console.log(priorityHighestForLoki[0]);
+console.log(priorityHighestForLoki);
 
 var typeHomeTasks = ToDoList.describeTasksForType("HomeTask", tasks);
 console.log(typeHomeTasks);

@@ -2,7 +2,7 @@
 /// <reference path="to-do-people.ts" />
 /// <reference path="to-do-listing-functions.ts" />
 /// <reference path="to-do-create-tasks.ts" />
-module ToDoList {
+// module ToDoList {
 
   $(document).ready(function() {
     var thorTasks = ToDoList.describeTasksForPerson(people.thor, tasks);
@@ -22,4 +22,4 @@ module ToDoList {
       $(".loki-high-pri").append("<ul><li>" + priorityHighestForLoki[0] + "</li></ul>");
 
   });
-}
+// }
